@@ -24,14 +24,15 @@
             <!-- Logo and Site Name -->
             <div class="flex items-center">
                 <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="h-10 w-10 md:h-12 md:w-12">
-                <h1 class="ml-2 hidden md:block text-lg md:text-sm font-bold">The Online Liquor Vault</h1> <!-- Hidden on small devices, visible on medium and larger -->
-
+                <h1 class="ml-2 hidden md:block text-lg md:text-sm font-bold">The Online Liquor Vault</h1>
             </div>
 
             <!-- Search Bar for all devices -->
             <div class="flex items-center flex-1 justify-center">
                 <form action="" method="GET" class="flex w-full md:w-2/3 lg:w-full">
-                    <input type="text" name="query" placeholder="Search" class="w-full px-x py-2 ml-2 text-sm md:text-base text-black rounded-l-md focus:outline-none" required>
+                    <input type="text" name="query" placeholder="Search"
+                        class="w-full px-2 py-2 ml-2 text-sm md:text-base text-black rounded-l-md focus:outline-none"
+                        required>
                     <button type="submit" class="px-4 py-2 bg-red-700 hover:bg-red-600 text-white rounded-r-md">
                         <i class="fas fa-search"></i>
                     </button>
@@ -43,25 +44,116 @@
                 <i class="fas fa-bars"></i>
             </button>
 
-            <!-- Horizontal Menu for larger devices -->
-            <nav id="menu" class="hidden md:flex mx-2 items-center space-x-6">
-                <a href="{{ route('welcome') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i class="fas fa-home"></i> Home</a>
-                <a href="{{ route('about') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i class="fas fa-info-circle"></i> About</a>
-                <a href="{{ route('contact') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i class="fas fa-phone"></i> Contact</a>
-                <a href="" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i class="fas fa-shopping-cart"></i> Cart</a>
-                <a href="" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i class="fas fa-user-circle"></i> Profile</a>
-                <a href="{{ route('login') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <!-- Navigation Menu -->
+            <nav class="hidden md:flex mx-2 items-center space-x-6">
+                <a href="{{ route('welcome') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i
+                        class="fas fa-home"></i> Home</a>
+                <a href="{{ route('about') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i
+                        class="fas fa-info-circle"></i> About</a>
+                <a href="{{ route('contact') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i
+                        class="fas fa-phone"></i> Contact</a>
+                <a href="" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i
+                        class="fas fa-shopping-cart"></i> Cart</a>
+
+                @auth
+                    <div class="group relative">
+                        {{-- add order section --}}
+                        <a href="" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base">
+                            <i class="fas fa-box"></i> Orders
+                        </a>
+
+                        <a href="" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i
+                                class="fas fa-user-circle"></i> Profile</a>
+
+                        <a href="{{ route('logout') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+
+
+                        {{-- <i class="fas fa-user text-xl bg-gray-200 p-2 rounded-full cursor-pointer"></i> --}}
+                        {{-- <div class="absolute hidden group-hover:block top-8 -right-10 bg-white shadow w-32 rounded-md border">
+                            <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                                <i class="fas fa-shopping-cart text-opacity-50"></i> My Cart
+                            </a>
+                            <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                                <i class="fas fa-box text-opacity-50"></i> My Orders
+                            </a>
+
+                            <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                                <i class="fas fa-user-circle text-opacity-50"></i> My Profile
+                            </a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                                    <i class="fas fa-sign-out-alt text-opacity-50"></i> Logout
+                                </button>
+                            </form>
+                        </div> --}}
+                    </div>
+                @else
+                    <a href="{{ route('login') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i
+                            class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                @endauth
             </nav>
         </div>
 
         <!-- Vertical Menu for mobile -->
-        <nav id="vertical-menu" class="hidden md:hidden bg-gray-800 text-white fixed top-0 right-0 w-3/4 h-full p-4 z-50">
-            <a href="{{ route('welcome') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i class="fas fa-home mr-2"></i> Home</a>
-            <a href="{{ route('about') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i class="fas fa-info-circle mr-2"></i> About</a>
-            <a href="{{ route('contact') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i class="fas fa-phone mr-2"></i> Contact</a>
-            <a href="" class="block px-4 py-2 hover:bg-red-700 text-sm"><i class="fas fa-shopping-cart mr-2"></i> Cart</a>
-            <a href="" class="block px-4 py-2 hover:bg-red-700 text-sm"><i class="fas fa-user-circle mr-2"></i> Profile</a>
-            <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i class="fas fa-sign-in-alt mr-2"></i> Login</a>
+        <nav id="vertical-menu"
+            class="hidden md:hidden bg-gray-800 text-white fixed top-0 right-0 w-3/4 h-full p-4 z-50">
+            <a href="{{ route('welcome') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i
+                    class="fas fa-home mr-2"></i> Home</a>
+            <a href="{{ route('about') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i
+                    class="fas fa-info-circle mr-2"></i> About</a>
+            <a href="{{ route('contact') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i
+                    class="fas fa-phone mr-2"></i> Contact</a>
+            <a href="" class="block px-4 py-2 hover:bg-red-700 text-sm"><i class="fas fa-shopping-cart mr-2"></i>
+                Cart</a>
+
+            @auth
+                <div class="group relative">
+                    <a href="" class="block px-4 py-2 hover:bg-red-700 text-sm">
+                        <i class="fas fa-box mr-2"></i> My Orders
+                    </a>
+
+                    <a href="" class="block px-4 py-2 hover:bg-red-700 text-sm"><i
+                            class="fas fa-user-circle mr-2"></i> Profile</a>
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="block px-4 py-2 hover:bg-red-700 text-sm w-full text-left">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </button>
+                    </form>
+
+                    {{-- <i class="fas fa-user text-xl bg-gray-200 p-2 rounded-full cursor-pointer"></i>
+                    <div class="absolute hidden group-hover:block top-8 -right-10 bg-white shadow w-32 rounded-md border">
+                        <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                            <i class="fas fa-shopping-cart text-opacity-50"></i> My Cart
+                        </a>
+                        <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                            <i class="fas fa-box text-opacity-50"></i> My Orders
+                        </a>
+                        <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                            <i class="fas fa-user-circle text-opacity-50"></i> My Profile
+                        </a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
+                                <i class="fas fa-sign-out-alt text-opacity-50"></i> Logout
+                            </button>
+                        </form>
+                    </div> --}}
+                </div>
+            @else
+                <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i
+                        class="fas fa-sign-in-alt mr-2"></i> Login</a>
+            @endauth
         </nav>
     </header>
 
@@ -72,7 +164,8 @@
 
     <!-- Footer -->
     <footer class="bg-red-900 text-white text-center py-4">
-        <p class="text-sm  md:text-base p-2">&copy; {{ date('Y') }} The Online Liquor Vault. All rights reserved.</p>
+        <p class="text-sm md:text-base p-2">&copy; {{ date('Y') }} The Online Liquor Vault. All rights reserved.
+        </p>
     </footer>
 
     <!-- Script for menu toggle and closing when clicked outside -->
