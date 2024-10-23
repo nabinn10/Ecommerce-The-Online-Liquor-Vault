@@ -14,7 +14,7 @@
                 <i class="bx bx-image text-4xl text-blue-900 mr-4"></i> <!-- Icon for Banners -->
                 <div>
                     <h2 class="text-2xl font-bold text-blue-900">Banners</h2>
-                    <p>Total Banners:  </p>
+                    <p>Total Banners:   </p>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                 <i class="bx bx-category-alt text-4xl text-blue-900 mr-4"></i> <!-- Icon for Categories -->
                 <div>
                     <h2 class="text-2xl font-bold text-blue-900">Categories</h2>
-                    <p>Total Categories:</p>
+                    <p>Total Categories: {{ $categories}}</p>
                 </div>
             </div>
 

@@ -12,13 +12,13 @@ class DashboardController extends Controller
     public function index()
     {
         // Fetch all products
-        $products = Product::with('category')->get();
+        $products = Product::count();
 
         // Fetch all categories
-        $categories = Category::orderBy('priority', 'asc')->get();
+        $categories = Category::count();
 
         // Fetch all banners
-        $banners = Banner::all();
+        $banners = Banner::count();
 
         // Return the dashboard view with products, categories, and banners
         return view('dashboard', compact('products', 'categories', 'banners'));
