@@ -76,25 +76,7 @@
 
 
 
-                        {{-- <i class="fas fa-user text-xl bg-gray-200 p-2 rounded-full cursor-pointer"></i> --}}
-                        {{-- <div class="absolute hidden group-hover:block top-8 -right-10 bg-white shadow w-32 rounded-md border">
-                            <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                                <i class="fas fa-shopping-cart text-opacity-50"></i> My Cart
-                            </a>
-                            <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                                <i class="fas fa-box text-opacity-50"></i> My Orders
-                            </a>
 
-                            <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                                <i class="fas fa-user-circle text-opacity-50"></i> My Profile
-                            </a>
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                                    <i class="fas fa-sign-out-alt text-opacity-50"></i> Logout
-                                </button>
-                            </form>
-                        </div> --}}
                     </div>
                 @else
                     <a href="{{ route('login') }}" class="hover:bg-red-700 px-3 py-2 rounded-md text-sm md:text-base"><i
@@ -130,25 +112,6 @@
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </button>
                     </form>
-
-                    {{-- <i class="fas fa-user text-xl bg-gray-200 p-2 rounded-full cursor-pointer"></i>
-                    <div class="absolute hidden group-hover:block top-8 -right-10 bg-white shadow w-32 rounded-md border">
-                        <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                            <i class="fas fa-shopping-cart text-opacity-50"></i> My Cart
-                        </a>
-                        <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                            <i class="fas fa-box text-opacity-50"></i> My Orders
-                        </a>
-                        <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                            <i class="fas fa-user-circle text-opacity-50"></i> My Profile
-                        </a>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="block py-2 hover:bg-gray-200 p-4 rounded-md">
-                                <i class="fas fa-sign-out-alt text-opacity-50"></i> Logout
-                            </button>
-                        </form>
-                    </div> --}}
                 </div>
             @else
                 <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-red-700 text-sm"><i

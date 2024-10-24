@@ -14,7 +14,10 @@ Route::get('/home', [PagesController::class, 'index'])->name('home');
 Route::get('/welcome', [PagesController::class, 'index'])->name('welcome');
 
 // view product
-Route::get('/product/{product}', [PagesController::class, 'viewproduct'])->name('viewproduct');
+// Route::get('/product/{product}', [PagesController::class, 'viewproduct'])->name('viewproduct');
+
+// view product
+Route::get('/viewproduct/{id}', [PagesController::class, 'viewproduct'])->name('viewproduct');
 
 
 
